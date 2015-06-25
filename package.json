@@ -26,6 +26,7 @@
   "homepage": "https://github.com/joeyism/node-merge-cli#readme",
   "dependencies": {
     "colors": "^1.1.2",
+    "inquirer": "^0.8.5",
     "lodash": "^3.9.3",
     "promise": "^7.0.3"
   },
