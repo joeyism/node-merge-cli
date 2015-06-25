@@ -4,11 +4,14 @@
   "description": "A CLI that allows you to git merge by selecting a branch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joeyism/node-merge-cli.git"
+  },
+  "bin":{
+    "merge":"index.js"
   },
   "keywords": [
     "git",
