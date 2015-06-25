@@ -32,5 +32,8 @@ To merge with the specific branch *[branch]*, run
     > merge [branch]
 
 ### Versions
+**1.0.1**
+* Fixed bug so it actually merges
+
 **1.0.0**
 * first publish
