@@ -1,0 +1,31 @@
+{
+  "name": "merge-cli",
+  "version": "1.0.0",
+  "description": "A CLI that allows you to git merge by selecting a branch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeyism/node-merge-cli.git"
+  },
+  "keywords": [
+    "git",
+    "merge",
+    "cli",
+    "user",
+    "simple",
+    "prompt"
+  ],
+  "author": "Joey Sham <sham.joey@gmail.com> (http://www.joeyism.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeyism/node-merge-cli/issues"
+  },
+  "homepage": "https://github.com/joeyism/node-merge-cli#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "promise": "^7.0.3"
+  }
+}
