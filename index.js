@@ -1,32 +1,60 @@
+#!/usr/bin/env node
 'use strict';
 
 var git = require('./lib/git');
 var prompt = require('./lib/prompt');
 require('colors');
-
 var sourceBranch, destBranch;
+var params = process.argv;
 
-git.getCurrentBranch().then(function(currentBranch){
+if (params[2] === 'local' || params[2] === 'all' || params[2] === undefined){
 
-    console.log('You are currently in branch '+currentBranch.bold());
-    destBranch = currentBranch;
-    return git.getBranches[location](); 
+    var type = params[2] || 'local';
 
-}).then(function(branches){
 
-    return prompt.branches(branches);
+    git.getCurrentBranch().then(function(currentBranch){
 
-}).then(function(branch){
+        console.log('You are currently in branch ' + currentBranch.bold);
+        destBranch = currentBranch;
+        return git.getBranches[type](); 
 
-    sourceBranch = branch;
-    return git.merge(branch);
+    }).then(function(branches){
 
-}).then(function(){
+        return prompt.branches(branches);
 
-    console.log('Successfully merging from ' + sourceBranch.bold + ' to ' + destBranch.bold);
+    }).then(function(branch){
 
-}).catch(function(error){
+        sourceBranch = branch;
+        return git.merge(branch);
 
-    console.log(error.red);
+    }).then(function(){
 
-});
+        console.log('Successfully merging from ' + sourceBranch.bold + ' to ' + destBranch.bold);
+
+    }).catch(function(error){
+
+        console.log(error.red);
+
+    });
+
+}
+else {
+
+    git.getCurrentBranch().then(function(currentBranch){
+
+        console.log('You are currently in branch ' + currentBranch.bold);
+        destBranch = currentBranch;
+        return git.merge(params[2]);
+
+    }).then(function(){
+
+        console.log('Successfully merging from ' + sourceBranch.bold + ' to ' + destBranch.bold);
+
+    }).catch(function(error){
+
+        console.log(error.red);
+
+    });
+
+
+}
