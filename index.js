@@ -9,7 +9,7 @@ var sourceBranch, destBranch;
 git.getCurrentBranch().then(function(currentBranch){
 
     console.log('You are currently in branch '+currentBranch.bold());
-    sourceBranch = currentBranch;
+    destBranch = currentBranch;
     return git.getBranches[location](); 
 
 }).then(function(branches){
@@ -18,7 +18,7 @@ git.getCurrentBranch().then(function(currentBranch){
 
 }).then(function(branch){
 
-    destBranch = branch;
+    sourceBranch = branch;
     return git.merge(branch);
 
 }).then(function(){
