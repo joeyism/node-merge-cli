@@ -92,42 +92,6 @@ describe('git', function(){
         });
 
     });
-    describe('checkout', function(){
-
-        beforeEach(function(done){
-            mockery.enable({
-                warnOnReplace: false,
-                warnOnUnregistered: false,
-                useCleanCache: true
-            });
-            done();
-        });
-
-        afterEach(function(done){
-            mockery.resetCache();
-            mockery.deregisterAll();
-            done();
-        });
-
-        it('should return the branch name if checkout is successful', function(done){
-            mockery.registerMock('child_process', fakeChild(null,'success'));
-            git = require('../lib/git');
-            git.checkout('branch name').then(function(result){
-                expect(result).to.equal('branch name');
-                done();
-            });
-        });
-
-        it('should return an error if checkout throws an error', function(done){
-            mockery.registerMock('child_process', fakeChild('error','doesnt matter'));
-            git = require('../lib/git');
-            git.checkout().catch(function(error){
-                expect(error).to.equal('error');
-                done();
-            });
-        });
-
-    });
 
     describe('getCurrentBranch', function(){
 
@@ -159,42 +123,6 @@ describe('git', function(){
             mockery.registerMock('child_process', fakeChild('error','whatever'));
             git = require('../lib/git');
             git.getCurrentBranch().catch(function(error){
-                expect(error).to.equal('error');
-                done();
-            });       
-        });
-    });
-
-    describe('newBranch', function(){
-
-        beforeEach(function(done){
-            mockery.enable({
-                warnOnReplace: false,
-                warnOnUnregistered: false,
-                useCleanCache: true
-            });
-            done();
-        });
-
-        afterEach(function(done){
-            mockery.resetCache();
-            mockery.deregisterAll();
-            done();
-        });
-
-        it('should successfully return the current branch the user is on', function(done){
-            mockery.registerMock('child_process', fakeChild(null, 'switched to new branch\n'));
-            git = require('../lib/git');
-            git.newBranch('branchname').then(function(result){
-                expect(result).to.equal('branchname');
-                done();
-            });       
-        });
-
-        it('should throw an error when getting current branch throws an error', function(done){
-            mockery.registerMock('child_process', fakeChild('error','whatever'));
-            git = require('../lib/git');
-            git.newBranch().catch(function(error){
                 expect(error).to.equal('error');
                 done();
             });       

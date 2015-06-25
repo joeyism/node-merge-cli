@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/joeyism/node-merge-cli.git"
   },
-  "bin":{
-    "merge":"index.js"
+  "bin": {
+    "merge": "index.js"
   },
   "keywords": [
     "git",
@@ -36,6 +36,7 @@
   "devDependencies": {
     "chai": "^3.0.0",
     "istanbul": "^0.3.16",
+    "mocha": "^2.2.5",
     "mockery": "^1.4.0"
   }
 }
