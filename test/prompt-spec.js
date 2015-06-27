@@ -25,7 +25,7 @@ describe('prompt', function(){
         });
 
         it('should successfully return the answers to the user\' prompt questions',function(done){
-            var answer = { checkoutBranch: branches[0] }; 
+            var answer = {merge: branches[0] }; 
             var mockInq = {
                 prompt: function(question, callback){
                     callback(answer);

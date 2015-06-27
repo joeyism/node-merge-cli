@@ -10,7 +10,19 @@ var fakeChild = function(error, result){
         }
     };
 };
-
+var createFakeChildSpawn = function(commandExpectation, paramsExpectation){
+    return {
+        spawn: function(command, params, options){
+            expect(command).to.equal(commandExpectation);
+            expect(params).to.deep.equal(paramsExpectation);
+            return {
+                on: function(command, callback){
+                    callback();
+                }
+            };
+        }
+    };
+};
 describe('git', function(){
 
     describe('getBranches', function(){
@@ -126,6 +138,33 @@ describe('git', function(){
                 expect(error).to.equal('error');
                 done();
             });       
+        });
+    });
+
+    describe('merge', function(){
+
+        beforeEach(function(done){
+            mockery.enable({
+                warnOnReplace: false,
+                warnOnUnregistered: false,
+                useCleanCache: true
+            });
+            done();
+        });
+
+        afterEach(function(done){
+            mockery.resetCache();
+            mockery.deregisterAll();
+            done();
+        });
+
+        it('should successfully run merge', function(done){
+            mockery.registerMock('child_process',createFakeChildSpawn('git',['merge','branch1']));
+            git = require('../lib/git');
+            git.merge('branch1').then(function(output){
+                expect(output).to.be.undefined;
+                done();
+            });
         });
     });
 });
