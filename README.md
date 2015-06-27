@@ -34,6 +34,9 @@ To merge with the specific branch *[branch]*, run
     > merge [branch]
 
 ### Versions
+**1.0.3**
+* Updated merge process to use spawn instead of exec
+
 **1.0.2**
 * Fixed bug where stdout and stderr were reversed
 
