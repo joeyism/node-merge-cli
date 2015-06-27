@@ -1,5 +1,7 @@
 # merge-CLI
 
+[![Build Status](https://travis-ci.org/joeyism/node-merge-cli.svg)](https://travis-ci.org/joeyism/node-merge-cli)
+
 A simple tool to visualize merging of your local branch to another branch.
 
 ### Installation
